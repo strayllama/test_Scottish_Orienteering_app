@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
-import axios from 'axios';  // API request
 import EventItem from './EventItem.js';
 
 class EventList extends Component {

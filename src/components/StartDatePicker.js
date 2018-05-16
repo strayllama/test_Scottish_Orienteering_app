@@ -9,7 +9,7 @@ class StartDatePicker extends Component {
     const dateNow = '2018/05/15';
     // const dateInOneYear =
     this.state = { startDate: dateNow }; // system date now
-    console.log('Start Date:' + this.state.startDate);
+//    console.log('Start Date:' + this.state.startDate);
   }
 
   render() {
