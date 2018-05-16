@@ -7,10 +7,10 @@ import Button from '../components/Button.js';
 // import LocationPicker from '../components/LocationPicker.js';
 
 class EventsContainer extends Component {
-  // constructor(props) {
-  //    super(props);
-  //    this.state = { printList: false };
-  // }
+  constructor(props) {
+     super(props);
+     this.state = { printList: false };
+  }
 
   // this.mapToggle = function () {
   //   console.log('Map Toggle Changed Status');
@@ -35,7 +35,7 @@ class EventsContainer extends Component {
         /><Text>Show Map</Text>
         {/* <LocationPicker /> */}
         <Button onPress={() => this.showList()} >Show Events</Button>
-        {/* {this.state.printList && <EventList data={this.props.data} /> } */}
+        {this.state.printList && <EventList data={this.props.data} /> }
       </View>
     );
   } // end render

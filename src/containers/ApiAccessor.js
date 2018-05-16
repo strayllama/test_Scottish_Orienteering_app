@@ -13,13 +13,13 @@ class ApiAccessor extends React.Component {
 
   componentDidMount() {
     this.getAsyncData(() => {
-      console.log('AllEvents array length:', this.state.allEvents.length);
+      // console.log('AllEvents array length:', this.state.allEvents.length);
       if (this.state.allEvents.length === 0) {
         console.log('Requesting API data as AsyncStorage AND State are empty.');
         this.requestApiData();
       } else {
         console.log('Not requesting API data as event Array is !=== 0, so filled from Async Storage!?');
-        console.log(this.state.allEvents);
+        // console.log(this.state.allEvents);
       }
     });
   } // end DidMount
@@ -28,8 +28,8 @@ class ApiAccessor extends React.Component {
     try {
       const value = await AsyncStorage.getItem('@allEvents:key');
       this.setState({ allEvents: value });
-      console.log('Requesting data from AsyncStorage, revieved:');
-      console.log(value);
+      // console.log('Requesting data from AsyncStorage, revieved:');
+      // console.log(value);
     } catch (e) {
       console.log('Error setting data ', e);
     }
@@ -38,7 +38,7 @@ class ApiAccessor extends React.Component {
 
   async saveToAsyncData() {
     const obj = JSON.stringify(this.state.allEvents);
-    console.log("Trying to save the following to AsyncStorage:", obj);
+    console.log('Trying to save the following to AsyncStorage:', obj);
     try {
       await AsyncStorage.setItem('@allEvents:key', obj);
     } catch (e) {
@@ -52,11 +52,12 @@ class ApiAccessor extends React.Component {
       .then(response => {
         this.setState({ allEvents: response.data });
         console.log('Saved Response data to State.allEvents as array:');
-        console.log(this.state.allEvents);
-        // this.saveApiData();
+        // console.log(this.state.allEvents);
         this.saveToAsyncData();
       });
   }
+
+  
 
   render() {
     return (
