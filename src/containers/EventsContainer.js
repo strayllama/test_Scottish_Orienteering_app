@@ -7,11 +7,18 @@ import Button from '../components/Button.js';
 // import LocationPicker from '../components/LocationPicker.js';
 
 class EventsContainer extends Component {
+  // constructor(props) {
+  //    super(props);
+  //    this.state = { printList: false };
+  // }
 
   // this.mapToggle = function () {
   //   console.log('Map Toggle Changed Status');
   // };
 
+  showList() {
+    this.setState({ printList: true });
+  }
 
   render() {
     return (
@@ -27,8 +34,8 @@ class EventsContainer extends Component {
           onTintColor='rgb(73, 175, 31)'
         /><Text>Show Map</Text>
         {/* <LocationPicker /> */}
-        <Button onPress={() => { Linking.openURL('http://google.co.uk'); }}>Show Events</Button>
-        {/* <EventList data={this.props.data} /> */}
+        <Button onPress={() => this.showList()} >Show Events</Button>
+        {/* {this.state.printList && <EventList data={this.props.data} /> } */}
       </View>
     );
   } // end render

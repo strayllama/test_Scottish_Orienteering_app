@@ -7,17 +7,18 @@ import EventsContainer from './EventsContainer.js';
 class ApiAccessor extends React.Component {
   state = {
     allEvents: [],
-    scotlandRegionUrl: 'https://www.britishorienteering.org.uk/fixturesjson.php?assoc=soa',
+//    scotlandRegionUrl: 'https://www.britishorienteering.org.uk/fixturesjson.php?assoc=soa',
     allEventsUrl: 'https://www.britishorienteering.org.uk/fixturesjson.php?filters'
   }
 
   componentDidMount() {
     this.getAsyncData(() => {
+      console.log('AllEvents array length:', this.state.allEvents.length);
       if (this.state.allEvents.length === 0) {
         console.log('Requesting API data as AsyncStorage AND State are empty.');
         this.requestApiData();
       } else {
-        console.log('Not requesting API data as state has been populated from Async Storage!');
+        console.log('Not requesting API data as event Array is !=== 0, so filled from Async Storage!?');
         console.log(this.state.allEvents);
       }
     });
@@ -27,7 +28,7 @@ class ApiAccessor extends React.Component {
     try {
       const value = await AsyncStorage.getItem('@allEvents:key');
       this.setState({ allEvents: value });
-      console.log('GOT THE DATA FROM ASYNCSTORAGE:');
+      console.log('Requesting data from AsyncStorage, revieved:');
       console.log(value);
     } catch (e) {
       console.log('Error setting data ', e);
@@ -37,6 +38,7 @@ class ApiAccessor extends React.Component {
 
   async saveToAsyncData() {
     const obj = JSON.stringify(this.state.allEvents);
+    console.log("Trying to save the following to AsyncStorage:", obj);
     try {
       await AsyncStorage.setItem('@allEvents:key', obj);
     } catch (e) {
@@ -56,30 +58,13 @@ class ApiAccessor extends React.Component {
       });
   }
 
-  // saveApiData() {
-  //   console.log('Trying to save array allEvents to AsyncStorage!!');
-  //   try {
-  //     AsyncStorage.setItem('@allEvents:key', JSON.stringify(this.state.allEvents));
-  //   } catch (error) {
-  //     console.log('Error saving data', error);
-  //   }
-  //
-  //   console.log('This was send to AsyncStorage:');
-  //   console.log(JSON.stringify(this.state.allEvents));
-  //
-  //   // console.log('This is what is in AsyncStorage: ');
-  //   // AsyncStorage.getItem('allEvents', (value) => {
-  //   //   console.log(JSON.parse(value));
-  //   // });
-  // }
-
   render() {
     return (
       <View>
         <EventsContainer data={this.state.allEvents} />
       </View>
     );
-  } // end render
+  }
 
 } // end class
 
