@@ -7,19 +7,25 @@ import EventsContainer from './EventsContainer.js';
 class ApiAccessor extends React.Component {
   state = {
     allEvents: [],
+    timeSinceLastApiRequest: 1,
     scotlandRegionUrl: 'https://www.britishorienteering.org.uk/fixturesjson.php?assoc=soa',
     allEventsUrl: 'https://www.britishorienteering.org.uk/fixturesjson.php?filters'
+  }
+
+  setEventsButtonActive() {
+    console.log('Will NOW turn on Show Events button.');
   }
 
   componentDidMount() {
     this.getAsyncData(() => {
       console.log('AllEvents array length:', this.state.allEvents.length);
-      if (this.state.allEvents.length === 0) {
-        console.log('Requesting API data as AsyncStorage AND State are empty.');
+      if (this.state.allEvents.length === 0 && this.state.timeSinceLastApiRequest > 2) {
+        console.log('Requested API data: AsyncStorage is empty or its been +2 hours since last.');
         this.requestApiData();
       } else {
         console.log('Not requesting API as data already in AsyncStorage.');
         // console.log(this.state.allEvents);
+        this.setEventsButtonActive();
       }
     });
   } // end DidMount
@@ -49,12 +55,11 @@ class ApiAccessor extends React.Component {
   requestApiData() {
     axios.get(this.state.allEventsUrl)
     // axios.get(this.state.scotlandRegionUrl)
-      .then(response => {
-        this.setState({ allEvents: response.data });
-        console.log('Saved Response data to State.allEvents as array:');
-        // console.log(this.state.allEvents);
-        this.saveToAsyncData();
-      });
+    .then(response => {
+      this.setState({ allEvents: response.data }, () => this.setEventsButtonActive());
+      console.log('Saved Response data to allEvents in state, as an array:');
+      this.saveToAsyncData();
+    });
   }
 
   render() {
