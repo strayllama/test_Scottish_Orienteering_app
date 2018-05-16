@@ -1,23 +1,15 @@
 import React from 'react';
-import { Text, View, Image, Linking } from 'react-native';
+import { Text, View, Linking } from 'react-native';
 import Card from './Card.js';
 import CardSection from './CardSection.js';
-//import Link from './Link.js';
 import Button from './Button.js';
-
 
 const EventItem = ({ event }) => {
   const { date, level, club, venue, link } = event;
-  const { imageStyle, headerTextStyle, headerContentStyle, imageBoxStyle } = styles;
+  const { headerTextStyle, headerContentStyle } = styles;
   return (
     <Card>
       <CardSection>
-        <View style={imageBoxStyle}>
-          <Image
-            style={imageStyle}
-            source={require('../images/soa_logo_2017.png')}
-          />;
-        </View>
         <View style={headerContentStyle}>
           <Text style={headerTextStyle}>{date}</Text>
           <Text>LEVEL: {level}</Text>
@@ -42,16 +34,6 @@ const styles = {
   },
   headerTextStyle: {
     fontSize: 18
-  },
-  imageStyle: {
-    height: 26,
-    width: 90
-  },
-  imageBoxStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 10
   }
 };
 

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, Switch, Linking } from 'react-native';
+import { View, Text, Switch } from 'react-native';
 import Header from '../components/Header.js';
 import EventList from '../components/EventList.js';
 import StartDatePicker from '../components/StartDatePicker.js';
+// import LocationPicker from '../components/LocationPicker.js';
 import Button from '../components/Button.js';
 // import LocationPicker from '../components/LocationPicker.js';
 
@@ -11,10 +12,6 @@ class EventsContainer extends Component {
      super(props);
      this.state = { printList: false };
   }
-
-  // this.mapToggle = function () {
-  //   console.log('Map Toggle Changed Status');
-  // };
 
   showList() {
     this.setState({ printList: true });
@@ -27,6 +24,7 @@ class EventsContainer extends Component {
         <Text>Search for Orienteering events!
           Pick start date and time period.
         </Text>
+        <View style={style.filtersBox}>
         <StartDatePicker />
         <Switch
           // onValueChange={this.mapToggle()}
@@ -34,12 +32,20 @@ class EventsContainer extends Component {
           onTintColor='rgb(73, 175, 31)'
         /><Text>Show Map</Text>
         {/* <LocationPicker /> */}
-        <Button onPress={() => this.showList()} >Show Events</Button>
+          <Button onPress={() => this.showList()}>Show Events</Button>
+        </View>
         {this.state.printList && <EventList data={this.props.data} /> }
+        {/* <EventList data={this.props.data} /> */}
       </View>
     );
   } // end render
 
 } // end class
+
+const style = {
+  filtersBox: {
+    height: 150
+  }
+};
 
 export default EventsContainer;

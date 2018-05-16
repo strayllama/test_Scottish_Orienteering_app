@@ -7,18 +7,18 @@ import EventsContainer from './EventsContainer.js';
 class ApiAccessor extends React.Component {
   state = {
     allEvents: [],
-//    scotlandRegionUrl: 'https://www.britishorienteering.org.uk/fixturesjson.php?assoc=soa',
+    scotlandRegionUrl: 'https://www.britishorienteering.org.uk/fixturesjson.php?assoc=soa',
     allEventsUrl: 'https://www.britishorienteering.org.uk/fixturesjson.php?filters'
   }
 
   componentDidMount() {
     this.getAsyncData(() => {
-      // console.log('AllEvents array length:', this.state.allEvents.length);
+      console.log('AllEvents array length:', this.state.allEvents.length);
       if (this.state.allEvents.length === 0) {
         console.log('Requesting API data as AsyncStorage AND State are empty.');
         this.requestApiData();
       } else {
-        console.log('Not requesting API data as event Array is !=== 0, so filled from Async Storage!?');
+        console.log('Not requesting API as data already in AsyncStorage.');
         // console.log(this.state.allEvents);
       }
     });
@@ -27,11 +27,11 @@ class ApiAccessor extends React.Component {
   async getAsyncData(callback) {
     try {
       const value = await AsyncStorage.getItem('@allEvents:key');
-      this.setState({ allEvents: value });
+      this.setState({ allEvents: JSON.parse(value) });
       // console.log('Requesting data from AsyncStorage, revieved:');
       // console.log(value);
-    } catch (e) {
-      console.log('Error setting data ', e);
+    } catch (error) {
+      console.log('Error setting data ', error);
     }
     callback();
   }
@@ -56,8 +56,6 @@ class ApiAccessor extends React.Component {
         this.saveToAsyncData();
       });
   }
-
-  
 
   render() {
     return (
