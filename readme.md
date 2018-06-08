@@ -26,17 +26,18 @@ http://www.britishorienteering.org.uk/fixturesjson.php?assoc=eaoa&club=havoc&lev
 
 
 # Scottish Orienteering Website Companion App.
- and keep it simple, do it well, and make it very easy to use and attractive.
+Keep it simple, do it well, and make it very easy to use and attractive.
 
-We will therefore only have it for displaying upcoming events and activities, within a (customisable) X mile radius of the phone, or searchable by any location between two dates (for e.g. somebody going on holiday and planning ahead).
-
-Do you think this will be possible?! Will the app be compatible with Android and Apple?
+We will therefore only have it for displaying upcoming events and activities.
+Customisable) X mile radius of the phone, or searchable by any location between two dates (for e.g. somebody going on holiday and planning ahead).
+Options for map view or list view (default for map view?)
 
 To consider:
-Events and activities are different categories on the British Orienteering website (activities being the more informal club training-type things)
-Options for map view or list view (default for map view?)
+Events and activities are different categories on the British Orienteering website (activities being the more informal club training-type things).
 Can zoom on map and click on orienteering pin (can supply!) for one screen of simple info, with a direct link to the entry website if applicable Do we colour-code events on the map for how soon they're coming up? (See British Orienteering website - I don't think this is a necessity, but might be helpful)
+
 To include SOA logo, and use of SOA colour-scheme !
+
 Ideal format for displaying events:
 * Title of event/activity (no more acronyms!)
 * Date / location / time
@@ -47,5 +48,6 @@ Ideal format for displaying events:
 * Event run by/contact info: [Club name and contact details]
 
 We will have a couple of issues with this (!):
-All necessary info should (ideally) display on one screen, succinctly. However, the British Orienteering (hereafter known as BOF!) format for event info is minimal, so even though organisers are required to register their event/activity with BOF on the BOF website, they often/always have a separate page on their club website giving all the details (in reams of mish-mash, as we talked about on Saturday). Q - where is the app going to pull the event info from?
+All necessary info should (ideally) display on one screen, succinctly. However, the British Orienteering (hereafter known as BOF!) format for event info is minimal, so even though organisers are required to register their event/activity with BOF on the BOF website, they often/always have a separate page on their club website giving all the details (in reams of mish-mash, as we talked about on Saturday).
+Q - where is the app going to pull the event info from?
 Duplication/time constraints. If the app doesn't pull the info from the BOF website (clubs don't seem to update it well), or club websites (no standard format; no way for the app to tell when an event has been added?), how do we do it? Volunteers and staff are already really stretched!
